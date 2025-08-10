@@ -27,7 +27,7 @@ app.MapPost("/postsWithoutLazyLoading", (MyDbContext db) =>
 {
     var stopWatch = Stopwatch.StartNew();
 
-    var users = db.Users.Include(u => u.posts);
+    var users = db.Users.Include(u => u.posts).ToList();
     foreach (var user in users)
     {
         foreach (var post in user.posts)
